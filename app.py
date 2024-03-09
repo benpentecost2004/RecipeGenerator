@@ -22,7 +22,7 @@ def get_recipes():
 
 def fetch_recipes(ingredients, api_key):
     params = {
-        "ingredients": ",".join(ingredients),
+        "ingredients": ", ".join(ingredients),
         "number": 5,
         "apiKey": api_key,
     }
