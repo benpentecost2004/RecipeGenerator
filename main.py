@@ -34,7 +34,7 @@ def main():
     # print("Do you have any dietary restrictions? (e.g., vegetarian, vegan, gluten free)")
     # dietary_restrictions = input().strip().lower().split(",")
 
-    api_key = 'd55ef8798a254dda9dffeed66d1e205a'
+    api_key = '869cb16aba7a44688ea0a366b4b5bb45'
     recipes = fetch_recipes(available_ingredients, api_key)
 
     if recipes:
