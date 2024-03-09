@@ -10,6 +10,9 @@
     <ul>
         {% for recipe in recipes %}
         <li>
+            {% if recipe.image_url %}
+                <img src="{{ recipe.image_url }}" alt="{{ recipe.title }}">
+            {% endif %}
             <h2>{{ recipe.title }}</h2>
             {% if recipe.missing_ingredients %}
                 <p>Additional Ingredients Needed: {{ ', '.join(recipe.missing_ingredients) }}</p>
