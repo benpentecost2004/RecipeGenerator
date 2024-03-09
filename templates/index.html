@@ -4,13 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Generator</title>
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #fe3c72;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #fd5564;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #fe3c72;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Recipe Generator!</h1>
-    <form action="/recipes" method="post">
-        <label for="ingredients">Enter ingredients (separated by commas):</label><br>
-        <input type="text" id="ingredients" name="ingredients" required><br>
-        <button type="submit">Get Recipes</button>
-    </form>
+    <header>
+    <h1>Welcome to Ingredient Matcher</h1>
+    </header>
+    <main>
+        <form action="/recipes" method="post">
+            <label for="ingredients">Enter ingredients (separated by commas):</label><br>
+            <input type="text" id="ingredients" name="ingredients" required><br>
+            <button type="submit">Get Recipes</button>
+        </form>
+    </main>
+    <footer>
+    <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
