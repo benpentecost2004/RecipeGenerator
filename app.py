@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 API_ENDPOINT = "https://api.spoonacular.com/recipes/findByIngredients"
-API_KEY = '221d1c39cf974c55b1be66a0b9b41570'
+API_KEY = '869cb16aba7a44688ea0a366b4b5bb45'
 
 @app.route('/')
 def index():
@@ -22,7 +22,7 @@ def get_recipes():
 
 def fetch_recipes(ingredients, api_key):
     params = {
-        "ingredients": ",".join(ingredients),
+        "ingredients": ", ".join(ingredients),
         "number": 5,
         "apiKey": api_key,
     }
@@ -70,5 +70,44 @@ def get_nutrient_info(recipe_id, api_key):
     else:
         return {}
 
+def fetch_recipes(ingredients, api_key):
+    params = {
+        "ingredients": ",".join(ingredients),
+        "number": 5,
+        "apiKey": api_key,
+    }
+    response = requests.get(API_ENDPOINT, params=params)
+    if response.status_code == 200:
+        recipes = response.json()
+        for recipe in recipes:
+            recipe["missing_ingredients"] = get_missing_ingredients(recipe.get("missedIngredients", []))
+            recipe["source_url"] = get_source_url(recipe.get("id", ""), api_key)
+            recipe["nutrients"] = get_nutrient_info(recipe.get("id", ""), api_key)
+            recipe["image_url"] = get_image_url(recipe.get("id", ""), api_key)
+        return recipes
+    else:
+        print("Failed to fetch recipes:", response.status_code)
+        return []
+
+def get_image_url(recipe_id, api_key):
+    url = f"https://api.spoonacular.com/recipes/{recipe_id}/information"
+    params = {
+        "apiKey": api_key,
+    }
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        return data.get("image", "")
+    else:
+        return ""
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
+
+
