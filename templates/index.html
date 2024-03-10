@@ -4,13 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #fe3c72;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        form {
+            text-align: center; /* Align form contents to the center */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        nav {
+            background-color: #fd5564;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #fe3c72;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        img {
+            width: 550px;
+            height: 300px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
-<body>
-    <h1>Welcome to Recipe Generator!</h1>
-    <form action="/recipes" method="post">
-        <label for="ingredients">Enter ingredients (separated by commas):</label><br>
-        <input type="text" id="ingredients" name="ingredients" required><br>
-        <button type="submit">Get Recipes</button>
-    </form>
+<body style="background-color:#424242;">
+  <header>
+   <h1 style="color: #fff;"> Welcome to Ingredient Matcher</h1>
+   </header>
+   <main>
+  <style="background-color: #424242; padding: 30px; display: flex; flex-direction: column; align-items: center;">
+   <form action="/recipes" method="post" style="width: 90; display: flex; flex-direction: column; align-items: center;">
+       <label for="ingredients" style="display: flex; margin-bottom: 10px; color: #fd5564; font-weight: bold;">Enter Ingredients (separated by commas):</label>
+       <div style="display: flex; width: 50%;">
+           <input type="text" id="ingredients" name="ingredients" required style="flex: 1; padding: 10px; background-color: #ddd; border: 10px; border-radius: 5px;">
+       </div>
+       <button type="submit" style="width: 20%; padding: 10px; background-color: #fd5564; color: white; border: 5px; border-radius: 5px; cursor: pointer; margin-top: 10px; font-weight: bold;">Get Recipes</button>
+   </form>
+</div>
+   </main>
+  <img src="/tinder-2.png">
+   <footer>
+   <p>&copy; 2024 Ingredient Matcher. All rights reserved.</p>
+   </footer>
+
 </body>
 </html>
+
+
