@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-bottom: 0.5px solid #ccc;
+        }
+        img {
+            width: 300%;
+            max-width: 200px;
+            margin-bottom: 1rem;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .nutrients-table {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .nutrients-table th,
+        .nutrients-table td {
+            padding: 0.5rem;
+            border: 0.5px solid #ccc;
+        }
+        .nutrients-table th {
+            text-align: left;
+        }
+    </style>
+</head>
+<body style="background-color: #fd5564; color: #fff;">
+    <h1>You can make the following recipes:</h1>
+    <ul>
+        {% for recipe in recipes %}
+        <li>
+            {% if recipe.image_url %}
+                <img src="{{ recipe.image_url }}" alt="{{ recipe.title }}">
+            {% endif %}
+            <h2>{{ recipe.title }}</h2>
+            {% if recipe.missing_ingredients %}
+                <p>Additional Ingredients Needed: {{ ', '.join(recipe.missing_ingredients) }}</p>
+            {% else %}
+                <p>You have all the ingredients!</p>
+            {% endif %}
+            <p>Go to Recipe: <a href="{{ recipe.source_url }}" target="_blank">{{ recipe.title }}</a></p>
+            {% if recipe.nutrients %}
+                <h3>Nutrients:</h3>
+                <table class="nutrients-table">
+                    <thead>
+                        <tr>
+                            {% for nutrient in recipe.nutrients.keys() %}
+                                <th>{{ nutrient }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for amount in recipe.nutrients.values() %}
+                                <td>{{ amount }}</td>
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Nutrient information not available.</p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
