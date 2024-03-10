@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 API_ENDPOINT = "https://api.spoonacular.com/recipes/findByIngredients"
-API_KEY = '4e965940d8064245b4ada8f022098a8c'
+API_KEY = 'dea5cfbea5c34f5f99b54e41d2b3559f'
 
 @app.route('/')
 def index():
