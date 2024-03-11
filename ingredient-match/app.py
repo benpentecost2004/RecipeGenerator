@@ -4,11 +4,20 @@ import requests
 app = Flask(__name__)
 
 API_ENDPOINT = "https://api.spoonacular.com/recipes/findByIngredients"
-API_KEY = '869cb16aba7a44688ea0a366b4b5bb45'
+API_KEY = 'a097849a36c846a0a4da85c291f859cb'
 
 @app.route('/')
-def index():
+
+#def index():
+    #return render_template('index.html')
+def uploadImage(request_method=None):
+    if request_method == 'POST':
+        image = request.files['tinder-2.png']
+        image.save('tinder-2.png')
+        return
     return render_template('index.html')
+
+
 
 @app.route('/recipes', methods=['POST'])
 def get_recipes():
@@ -22,7 +31,7 @@ def get_recipes():
 
 def fetch_recipes(ingredients, api_key):
     params = {
-        "ingredients": ", ".join(ingredients),
+        "ingredients": ",".join(ingredients),
         "number": 5,
         "apiKey": api_key,
     }
@@ -104,10 +113,3 @@ def get_image_url(recipe_id, api_key):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-
-
-
-

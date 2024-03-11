@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+</head>
+<body>
+    <h1>You can make the following recipes:</h1>
+    <ul>
+        {% for recipe in recipes %}
+        <li>
+            <h2>{{ recipe.title }}</h2>
+            {% if recipe.missing_ingredients %}
+                <p>Additional Ingredients Needed: {{ ', '.join(recipe.missing_ingredients) }}</p>
+            {% else %}
+                <p>You have all the ingredients!</p>
+            {% endif %}
+            <p>Recipe Source URL: <a href="{{ recipe.source_url }}" target="_blank">{{ recipe.title }}</a></p>
+            {% if recipe.nutrients %}
+                <h3>Nutrients:</h3>
+                <ul>
+                    {% for nutrient, amount in recipe.nutrients.items() %}
+                        <li>{{ nutrient }}: {{ amount }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Nutrient information not available.</p>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
